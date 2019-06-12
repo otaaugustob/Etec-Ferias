@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SolicitacaoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azul"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/solicitacao" />
+
+        </LinearLayout>
+
+    <TableLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="0,1">
+
+        <TableRow>
+        <TextView android:text="@string/abono" />
+
+        <RadioGroup android:id="@+id/radiosn"
+                    android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioSim"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:clickable="false"
+                android:onClick="onRadioClick"
+                android:text="@string/sim" />
+
+            <RadioButton
+                android:id="@+id/radionao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="130dp"
+                android:onClick="onRadioClick"
+                android:text="@string/nao" />
+        </RadioGroup>
+        </TableRow>
+
+        <TableRow>
+        <TextView android:id="@+id/inicio"
+            android:text="@string/inicio"/>
+
+            <Button
+                android:id="@+id/btnSelecionar"
+                android:onClick="onSelecionarData"
+                android:text="Selecionar" />
+        </TableRow>
+
+        <TableRow>
+        <TextView android:id="@+id/quantidade"
+            android:text="@string/quantidade"/>
+
+            <Spinner
+                android:id="@+id/spnqntd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            </TableRow>
+            <TableRow>
+            <TextView android:id="@+id/viewfim"
+                android:text="@string/fim"/>
+                <TextView android:id="@+id/resultado"/>
+            </TableRow>
+
+        <Button android:id="@+id/btnRegistrar"
+            android:text="@string/registrar"/>
+
+    </TableLayout>
+    </LinearLayout>
+</ScrollView>

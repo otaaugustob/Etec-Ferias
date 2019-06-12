@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ETEC-Solicitação de Férias</string>
+    <string name="abono">Abono:</string>
+    <string name="solicitacao">Solicitação</string>
+    <string name="datainicio">Data de Inicio:</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="inicio">Inicio:</string>
+    <string name="quantidade">Quantidade:</string>
+    <string name="fim">Fim:</string>
+    <string name="registrar">Registrar</string>
+
+</resources>
