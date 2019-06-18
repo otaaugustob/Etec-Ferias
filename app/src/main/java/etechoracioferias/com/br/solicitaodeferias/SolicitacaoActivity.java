@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import android.widget.DatePicker;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 
@@ -24,6 +25,7 @@ public class SolicitacaoActivity extends AppCompatActivity {
     private Button btnSelecionar;
     private Button btnRegistrar;
     private Spinner spnqntd;
+    private RadioButton radionao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,11 @@ public class SolicitacaoActivity extends AppCompatActivity {
         btnSelecionar = findViewById(R.id.btnSelecionar);
         btnRegistrar = findViewById(R.id.btnRegistrar);
 
+        radionao = findViewById(R.id.radionao);
 
+        radionao.setChecked(true);
+
+        spnqntd.setAdapter(getAbonoNao());
     }
 
     private ArrayAdapter getAbonoSim() {

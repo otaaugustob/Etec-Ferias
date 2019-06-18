@@ -29,5 +29,10 @@ public class DateTimeUtils {
             return null;
         }
     }
+    public static Calendar checardia(Calendar date){
+        if (date.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY){
+
+        }
+    }
 
 }
