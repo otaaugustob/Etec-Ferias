@@ -82,8 +82,10 @@
                 <TextView android:id="@+id/resultado"/>
             </TableRow>
 
-        <Button android:id="@+id/btnRegistrar"
-            android:text="@string/registrar"/>
+        <Button
+            android:id="@+id/btnRegistrar"
+            android:onClick="onCadastrar"
+            android:text="@string/registrar" />
 
     </TableLayout>
     </LinearLayout>

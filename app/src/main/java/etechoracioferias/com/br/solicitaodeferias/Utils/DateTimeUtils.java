@@ -29,10 +29,17 @@ public class DateTimeUtils {
             return null;
         }
     }
-    public static Calendar checardia(Calendar date){
-        if (date.get(Calendar.DAY_OF_WEEK) == Calendar.MONDAY){
+    public static boolean isSegundaFeira(Date data){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(data);
+        int dia = cal.get(Calendar.DAY_OF_WEEK);
 
-        }
+      //  if(dia == 2){
+        //    return true;
+        //}
+        //else{
+          //  return false;
+        //}
+        return dia == 2;
     }
-
 }

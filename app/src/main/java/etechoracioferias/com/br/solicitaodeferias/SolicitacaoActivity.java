@@ -12,9 +12,11 @@ import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 
 import etechoracioferias.com.br.solicitaodeferias.Utils.DateTimeUtils;
 
@@ -96,5 +98,14 @@ public class SolicitacaoActivity extends AppCompatActivity {
     }
     public void onSelecionarData(View view){
         showDialog(view.getId());
+    }
+
+    public void onCadastrar (View view){
+        Date data = DateTimeUtils.toDate(btnSelecionar.getText().toString());
+
+        if(!DateTimeUtils.isSegundaFeira(data)){
+            Toast msg = Toast.makeText(this, "Esse dia não é uma segunda-feira",Toast.LENGTH_SHORT);
+            msg.show();
+        }
     }
 }
