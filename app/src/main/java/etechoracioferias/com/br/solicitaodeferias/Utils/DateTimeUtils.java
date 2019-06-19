@@ -42,4 +42,13 @@ public class DateTimeUtils {
         //}
         return dia == 2;
     }
+    public static Date adicionarDias(Date data, int dias){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(data);
+        cal.add(Calendar.DAY_OF_MONTH, dias);
+        return cal.getTime();
+    }
+    public static String formatDate (Date data){
+        return DATE_FORMAT.format(data);
+    }
 }

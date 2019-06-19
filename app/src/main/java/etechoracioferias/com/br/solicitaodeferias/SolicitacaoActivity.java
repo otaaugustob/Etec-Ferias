@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -28,6 +29,7 @@ public class SolicitacaoActivity extends AppCompatActivity {
     private Button btnRegistrar;
     private Spinner spnqntd;
     private RadioButton radionao;
+    private TextView resultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class SolicitacaoActivity extends AppCompatActivity {
         radiosn = findViewById(R.id.radiosn);
         btnSelecionar = findViewById(R.id.btnSelecionar);
         btnRegistrar = findViewById(R.id.btnRegistrar);
+        resultado = findViewById(R.id.resultado);
+
 
         radionao = findViewById(R.id.radionao);
 
@@ -101,11 +105,17 @@ public class SolicitacaoActivity extends AppCompatActivity {
     }
 
     public void onCadastrar (View view){
-        Date data = DateTimeUtils.toDate(btnSelecionar.getText().toString());
+        Date datas = DateTimeUtils.toDate(btnSelecionar.getText().toString());
 
-        if(!DateTimeUtils.isSegundaFeira(data)){
+        if(!DateTimeUtils.isSegundaFeira(datas)){
             Toast msg = Toast.makeText(this, "Esse dia não é uma segunda-feira",Toast.LENGTH_SHORT);
             msg.show();
+        }
+        else {
+            int dias = Integer.parseInt(spnqntd.getSelectedItem().toString());
+            Date datafinal = DateTimeUtils.adicionarDias(datas, dias);
+            resultado.setText(DateTimeUtils.formatDate(datafinal));
+
         }
     }
 }
