@@ -129,9 +129,10 @@ public class SolicitacaoActivity extends AppCompatActivity {
             ferias.setDiasferias(dias);
             ferias.setDatafinal(datafinal);
 
-            DatabaseReference myref = FirebaseDatabase.getInstance().getReference("ferias");
-            String id = myref.push().getKey();
-            myref.child(id).setValue(ferias);
+            DatabaseReference fer = FirebaseDatabase.getInstance().getReference("minhas ferias");
+            String id = fer.push().getKey();
+            fer.child(id).setValue(ferias);
+
         }
     }
 
