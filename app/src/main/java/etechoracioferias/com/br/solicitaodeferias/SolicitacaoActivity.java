@@ -15,11 +15,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
 import etechoracioferias.com.br.solicitaodeferias.Utils.DateTimeUtils;
+import etechoracioferias.com.br.solicitaodeferias.enuns.OpcaoAbonoEnum;
+import etechoracioferias.com.br.solicitaodeferias.model.MinhasFerias;
 
 
 public class SolicitacaoActivity extends AppCompatActivity {
@@ -30,6 +35,8 @@ public class SolicitacaoActivity extends AppCompatActivity {
     private Spinner spnqntd;
     private RadioButton radionao;
     private TextView resultado;
+
+    private OpcaoAbonoEnum opcaoAbono;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +51,8 @@ public class SolicitacaoActivity extends AppCompatActivity {
 
 
         radionao = findViewById(R.id.radionao);
-
         radionao.setChecked(true);
+        opcaoAbono = OpcaoAbonoEnum.NAO;
 
         spnqntd.setAdapter(getAbonoNao());
     }
@@ -66,11 +73,11 @@ public class SolicitacaoActivity extends AppCompatActivity {
         if (v.getId() == R.id.radioSim) {
 
             spnqntd.setAdapter(getAbonoSim());
-
+            opcaoAbono = OpcaoAbonoEnum.SIM;
         } else {
 
             spnqntd.setAdapter(getAbonoNao());
-
+            opcaoAbono = OpcaoAbonoEnum.NAO;
         }
 
 
@@ -116,6 +123,16 @@ public class SolicitacaoActivity extends AppCompatActivity {
             Date datafinal = DateTimeUtils.adicionarDias(datas, dias);
             resultado.setText(DateTimeUtils.formatDate(datafinal));
 
+            MinhasFerias ferias = new MinhasFerias();
+            ferias.setOpabono(opcaoAbono);
+            ferias.setDatainicio(DateTimeUtils.toDate(btnSelecionar.getText().toString()));
+            ferias.setDiasferias(dias);
+            ferias.setDatafinal(datafinal);
+
+            DatabaseReference myref = FirebaseDatabase.getInstance().getReference("ferias");
+            String id = myref.push().getKey();
+            myref.child(id).setValue(ferias);
         }
     }
+
 }
